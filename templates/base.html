@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="华为官网">
+    <meta name="description" content="华为手机、荣耀手机、官网正品保障">
+    <title>华为商城(VMALL.COM)华为手机、荣耀手机、官网正品保障</title>
+    <link rel="icon" href="/static/image/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_1070463_hxqc2v94jij.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/navigation.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/dropDown.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/appdropDown.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/shoppingCart.css" />
+    <link rel="stylesheet" href="/static/styles/rotation.css" />
+    <link rel="stylesheet" href="/static/styles/header.css" />
+    <link rel="stylesheet" href="/static/styles/leftNav.css" />
+    <link rel="stylesheet" href="/static/styles/lastNav.css" />
+    <script src="/static/js/Jquery.js"></script>
+    <script src="/static/js/location.js"></script>
+    <script src="/static/js/rotation.js"></script>
+    <script src="/static/js/notice.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div class="navTop">
+            <span class="choose1">
+                <a href="/">首页</a>
+                <a href="#">华为官网</a>
+                <a href="#">荣耀官网</a>
+                <a href="#">花粉俱乐部</a>
+                <a href="#">v码(优购码)</a>
+                <a href="#">企业购</a>
+                <a href="#">Select Region</a>
+                <div class="dropDown">
+                    <button class="dropBtn"><a>更多精彩<i class="iconfont icon-iconfontjiantou myicon"></i></a></button>
+                    <div class="dropContent">
+                        <a href="#">EMUI</a>
+                        <a href="#">应用市场</a>
+                        <a href="#">华为终端云空间</a>
+                        <a href="#">开发者联盟</a>
+                    </div>
+                </div>
+            </span>
+            <span class="choose">
+                 {% if session['logged_in'] %}
+        <a>欢迎{{session['username']}}登录</a>
+        <a href="/logout">退出</a>
+   {% else %}
+          <!-- Dropdown -->
+        <a href="/login">登录</a>
+        <a href="/register">注册</a>
+  {% endif %}
+                <a href="#">我的订单</a>
+                <a href="/bashboard">商品管理</a>|
+                <div class="dropDown">
+                    <button class="dropBtn"><a>客户服务<i class="iconfont icon-iconfontjiantou myicon"></i></a></button>
+                    <div class="dropContent">
+                        <a href="#">服务中心</a>
+                        <a href="#">联系客服</a>
+                    </div>
+                </div>
+                <div class="dropDownWeb">
+                    <button class="dropBtnWeb"><a href="index.html" target="_blank">网站导航<i
+                                class="iconfont icon-iconfontjiantou myicon"></i></a></button>
+                    <div class="dropContentWeb">
+                        <div class="webnav">
+                            <div class="home">
+                                <i class="iconfont icon-home myicon"></i>
+                                <a href="index.html">商城首页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+
+</body>
+</html>

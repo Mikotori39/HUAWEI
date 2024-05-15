@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="华为官网">
+    <meta name="description" content="华为手机、荣耀手机、官网正品保障">
+    <title>华为商城(VMALL.COM)华为手机、荣耀手机、官网正品保障</title>
+    <link rel="icon" href="/static/image/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_1070463_hxqc2v94jij.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/navigation.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/dropDown.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/appdropDown.css" />
+    <link type="text/css" rel="stylesheet" href="/static/styles/shoppingCart.css" />
+
+</head>
+<style>
+.inner_body {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 输入框样式 */
+.input-group {
+    margin-bottom: 20px;
+}
+
+/* 商品类别下拉样式 */
+.menu_cate .dropdown-menu {
+    background-color: #fff; /* 下拉菜单背景色 */
+}
+
+.menu_cate .dropdown-menu li {
+    padding: 5px 10px;
+}
+
+.menu_cate .dropdown-menu li a {
+    color: #333; /* 下拉菜单文字颜色 */
+}
+
+.menu_cate .dropdown-menu li:hover {
+    background-color: #f5f5f5; /* 鼠标悬停背景色 */
+}
+
+/* 按钮样式 */
+.fb {
+    background-color: #5cb85c; /* 按钮背景色 */
+    border-color: #4cae4c; /* 按钮边框颜色 */
+    color: #fff; /* 按钮文字颜色 */
+}
+
+.fb:hover {
+    background-color: #4cae4c; /* 按钮悬停背景色 */
+    border-color: #4cae4c; /* 按钮悬停边框颜色 */
+}
+</style>
+<body>
+    <div id="container">
+        <div class="navTop">
+            <span class="choose1">
+                <a href="/">首页</a>
+                <a href="#">华为官网</a>
+                <a href="#">荣耀官网</a>
+                <a href="#">花粉俱乐部</a>
+                <a href="#">v码(优购码)</a>
+                <a href="#">企业购</a>
+                <a href="#">Select Region</a>
+                <div class="dropDown">
+                    <button class="dropBtn"><a>更多精彩<i class="iconfont icon-iconfontjiantou myicon"></i></a></button>
+                    <div class="dropContent">
+                        <a href="#">EMUI</a>
+                        <a href="#">应用市场</a>
+                        <a href="#">华为终端云空间</a>
+                        <a href="#">开发者联盟</a>
+                    </div>
+                </div>
+            </span>
+            <span class="choose">
+                 {% if session['logged_in'] %}
+        <a>欢迎{{session['username']}}登录</a>
+        <a href="/logout">退出</a>
+   {% else %}
+          <!-- Dropdown -->
+        <a href="/login">登录</a>
+        <a href="/register">注册</a>
+  {% endif %}
+                <a href="#">我的订单</a>
+                <a href="/bashboard">商品管理</a>|
+                <div class="dropDown">
+                    <button class="dropBtn"><a>客户服务<i class="iconfont icon-iconfontjiantou myicon"></i></a></button>
+                    <div class="dropContent">
+                        <a href="#">服务中心</a>
+                        <a href="#">联系客服</a>
+                    </div>
+                </div>
+                <div class="dropDownWeb">
+                    <button class="dropBtnWeb"><a href="index.html" target="_blank">网站导航<i
+                                class="iconfont icon-iconfontjiantou myicon"></i></a></button>
+                    <div class="dropContentWeb">
+                        <div class="webnav">
+                            <div class="home">
+                                <i class="iconfont icon-home myicon"></i>
+                                <a href="index.html">商城首页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+
+<div class="page-top">
+
+<div class="inner_body" >
+<form action="/add_product" id="product_form" method="post" enctype="multipart/form-data">
+            <div class="inner_body" >
+
+<div class="input-group">
+    <span class="input-group-addon">商品类别</span>
+    <select class="form-control" id="category_select" name="category">
+        <option value="">请选择商品的类别</option>
+        <!-- 这里是一些示例类别 -->
+        <option value="1">电子产品</option>
+        <option value="2">服装</option>
+        <option value="3">家居用品</option>
+        <option value="4">食品</option>
+        <option value="5">书籍</option>
+        <!-- 你可以根据需要添加更多类别 -->
+    </select>
+</div>
+<div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品名称</span>
+                <input type="text" maxlength="50" id="pname"
+                       class="form-control must_input_product" name="pname"
+                       placeholder="商品名称" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品描述</span>
+                <textarea class="form-control must_input_product" id="pDesc" name="pDesc"
+                          rows="3" placeholder="说说你的商品吧~"></textarea>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品数量</span>
+                <input type="number" max="100" maxlength="2" id="counts"
+                       onkeyup="this.value=this.value.replace(/\D/g,'')"
+                       onafterpaste="this.value=this.value.replace(/\D/g,'')"
+                       class="form-control must_input_product" name="counts"
+                       placeholder="商品数量" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品原价</span>
+                <input type="number" maxlength="8" id="old_price"
+                       onkeyup="value=value.replace(/[^\d.]/g,'')"
+                       class="form-control must_input_product" name="old_price"
+                       placeholder="商品原价" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品售价</span>
+                <input type="number" maxlength="8"
+                       onkeyup="value=value.replace(/[^\d.]/g,'')" id="new_price"
+                       class="form-control must_input_product" name="new_price"
+                       placeholder="你出价" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品照片</span>
+                <div class="htmleaf-container">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <input type="file" name="file" multiple id="ssi-upload"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {#<button type="submit" class="btn btn-success fb" style="width: 100%;"
+                    onclick="checkAll()">发布商品
+            </button>
+            #}
+             <input type="submit" class="btn btn-success fb" style="width: 100%;" value="发布商品">
+            </div>
+</form>
+    </div>
+</div>
+</body>
+</html>
